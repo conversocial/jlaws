@@ -11,12 +11,18 @@ Installs the aws-sdk gem.
 
 # Usage
 
-include_recipe "jlaws" to make LWRPs available for use.
+To make LWRPs available for use and install the aws-sdk gem:
 
-jlaws_s3_file '/var/files/from/s3/mylocalfile.txt'
- bucket      'my-s3bucket'
- remote_path 'folder/mys3file.txt'
-end
+  include_recipe "jlaws"
+
+## jlaws_s3_file
+
+The supports the same attributes as the [file](http://docs.opscode.com/resource_file.html) resource.
+
+  jlaws_s3_file '/var/files/from/s3/mylocalfile.txt'
+    bucket      'my-s3bucket'
+    remote_path 'folder/mys3file.txt'
+  end
 
 # Author
 Author:: James Legg (<james.legg@conversocial.com>)

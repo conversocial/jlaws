@@ -19,10 +19,12 @@ To make LWRPs available for use and install the aws-sdk gem:
 
 The supports the same attributes as the [file](http://docs.opscode.com/resource_file.html) resource.
 
+```
   jlaws_s3_file '/var/files/from/s3/mylocalfile.txt'
     bucket      'my-s3bucket'
     remote_path 'folder/mys3file.txt'
   end
+```
 
 # Author
 Author:: James Legg (<james.legg@conversocial.com>)

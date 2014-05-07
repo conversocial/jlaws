@@ -6,6 +6,7 @@ class Chef::Recipe::Jlaws
   def self.S3DataBagSecret(s3_bucket, s3_path)
     s3 = AWS::S3.new()
     s3_file = s3.buckets[s3_bucket].objects[s3_path]
-    s3_file
+    s3_string = s3_file.read
+    s3_string
   end
 end

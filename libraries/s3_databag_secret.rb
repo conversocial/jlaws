@@ -1,4 +1,4 @@
-require AWS::S3
+#require 'awk-sdk'
 
 class Chef::Recipe::Jlaws
   # Retrieve a specified file from S3 using an EC2 instances IAM credentials

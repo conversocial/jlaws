@@ -2,9 +2,10 @@
 # Cookbook Name:: jlaws
 # Recipe:: default
 #
-chef_gem "aws-sdk" do
+c =chef_gem "aws-sdk" do
   action :install
   version node['jlaws']['aws_sdk_ver']
 end
+c.run_action(:install)
 
 require 'aws-sdk'

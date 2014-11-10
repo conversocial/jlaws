@@ -4,7 +4,7 @@ maintainer_email 'mail@jameslegg.co.uk'
 license          'Apache 2.0'
 description      'provides LWRPs for interaction with AWS'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.0.5'
+version          '0.0.6'
 depends          'build-essential', '~> 2.0'
 depends          'apt'
 supports         'ubuntu'

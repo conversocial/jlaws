@@ -16,10 +16,17 @@ suites:
     run_list:
       - recipe[jlaws::default]
     attributes:
-    # Test the instance-status library
+  # Test the instance-status library
   - name: instance-status
     run_list:
       - recipe[instance-status::default]
+    attributes:
+      <%= "aws_access_key_id: #{ENV['AWS_ACCESS_KEY_ID']}" %>
+      <%= "aws_secret_access_key: #{ENV['AWS_SECRET_ACCESS_KEY']}" %>
+  # Test the ASG library
+  - name: asg-instances
+    run_list:
+      - recipe[asg-instances::default]
     attributes:
       <%= "aws_access_key_id: #{ENV['AWS_ACCESS_KEY_ID']}" %>
       <%= "aws_secret_access_key: #{ENV['AWS_SECRET_ACCESS_KEY']}" %>

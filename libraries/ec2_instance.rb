@@ -1,10 +1,10 @@
 class Chef::Recipe::Jlaws
 
-  def self.ec2_instance(*args)
+  def self.Ec2InstanceInfo(*args)
     return self.get_ec2_instance(*args)
   end
 
-  def self.ec2_instance_private_ip_address(*args)
+  def self.Ec2InstancePrivateIp(*args)
     instance =  self.get_ec2_instance(*args)
     return instance[:private_ip_address]
   end

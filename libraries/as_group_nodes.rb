@@ -32,13 +32,29 @@ class Chef::Recipe::Jlaws
 
       resp = asg_con.describe_auto_scaling_groups(
         :auto_scaling_group_names => ["#{autoscale_group}"])
-      unless resp[:auto_scaling_groups].length == 0
+
+      if resp[:auto_scaling_groups].length != 0
         group = resp[:auto_scaling_groups].first
         instances = group[:instances]
-        return instances
       else
-        # Didn't get shit. returning nothing
-        return nil
+        # if we got no instances using exact matche for group name
+        # Try using the autoscale_group name as a wildcard
+        all_asgs = asg_con.describe_auto_scaling_groups()
+        found_asgs = []
+        all_asgs[:auto_scaling_groups].each do |asgroup|
+          if asgroup[:auto_scaling_group_name].include? autoscale_group
+            found_asgs.push(asgroup)
+          end
+        end
+        # Finding more than 1 autoscale group should result in an error
+        if found_asgs.length == 1
+          instances = found_asgs.first[:instances]
+        elsif
+          raise "Found multiple Auto Scale Groups matching #{autoscale_group}"
+        else
+          raise "No Auto Scale Groups match #{autoscale_group}"
+        end
       end
+      return instances
     end
 end

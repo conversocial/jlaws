@@ -8,13 +8,15 @@ instances = Chef::Recipe::Jlaws.AsgNodes(
   node['aws_secret_access_key'])
 
 
+log "sheeps #{instances}"
 instances.each do |instance|
+  log " dogs #{instance}"
   log " cows #{instance['instance_id']}"
 end
 
 
 instances = Chef::Recipe::Jlaws.AsgNodes(
-  'prod-solr-da-cluster-ProdSolrDaServerGroup',
+  'prod-solr-da-cluster',
   node['aws_access_key_id'],
   node['aws_secret_access_key'])
 

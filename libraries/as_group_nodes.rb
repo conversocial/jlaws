@@ -29,15 +29,16 @@ class Chef::Recipe::Jlaws
       else
         asg_con = AWS::AutoScaling::Client::V20110101.new()
       end
-      begin
-        resp = asg_con.describe_auto_scaling_groups(
-          :auto_scaling_group_names => ["#{autoscale_group}"])
 
+      resp = asg_con.describe_auto_scaling_groups(
+        :auto_scaling_group_names => ["#{autoscale_group}"])
+      unless resp[:auto_scaling_groups].length == 0
         group = resp[:auto_scaling_groups].first
         instances = group[:instances]
         return instances
-      rescue AWS::AutoScaling::Errors::InvalidInstanceID::NotFound
-        return 'notfound'
+      else
+        # Didn't get shit. returning nothing
+        return nil
       end
     end
 end

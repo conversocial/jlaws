@@ -10,8 +10,10 @@ end
 zlib.run_action(:install)
 
 c = chef_gem 'aws-sdk' do
-  action :install
+  # Forcing so that upgrades happen without break chef runs
+  options '--force'
   version node['jlaws']['aws_sdk_ver']
+  action :nothing
 end
 c.run_action(:install)
 

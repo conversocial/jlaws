@@ -9,10 +9,10 @@ zlib = package 'zlib1g-dev' do
 end
 zlib.run_action(:install)
 
-c = chef_gem 'aws-sdk' do
+c = chef_gem 'aws-sdk-v1' do
   action :install
   version node['jlaws']['aws_sdk_ver']
 end
 c.run_action(:install)
 
-require 'aws-sdk'
+require 'aws-sdk-v1'

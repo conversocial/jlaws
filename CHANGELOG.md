@@ -1,3 +1,11 @@
+### 0.1.3
+  Bug Fixes
+  - Force the install of aws-sdk-v1 so we don't fail on systems running
+    older version of this cookbook
+
+### 0.1.2
+  Bug Fixes
+  - Update version of aws-sdk-v1
 ### 0.1.1
   Bug Fixes
   - Be specific about installing and using aws-sdk-v1

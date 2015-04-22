@@ -12,8 +12,8 @@ zlib.run_action(:install)
 c = chef_gem 'aws-sdk-v1' do
   action :install
   version node['jlaws']['aws_sdk_ver']
-  # Force to ensure we remove the old aws-sdk binary
-  options(:force => true)
+  # don't install wrappers to avoid conflicts with older gem versions
+  options('--no-wrappers')
 end
 c.run_action(:install)
 

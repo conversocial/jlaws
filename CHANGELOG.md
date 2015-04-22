@@ -1,6 +1,7 @@
 ### 0.1.4
   Bug Fixes
-  - Still need to force install of aws-skd-v1, should co-exist with V2 gem OK
+  - Still need to force install of aws-sdk-v1, but should now co-exist with
+    aws-sdk V2 gem OK
 
 ### 0.1.4
   Bug Fixes

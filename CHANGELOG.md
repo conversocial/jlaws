@@ -1,5 +1,10 @@
 ### 0.1.4
   Bug Fixes
+  - Still need to force install of aws-sdk-v1, but should now co-exist with
+    aws-sdk V2 gem OK
+
+### 0.1.4
+  Bug Fixes
   - Don't force, just don't install bin wrappers
 
 ### 0.1.3

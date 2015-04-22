@@ -1,3 +1,7 @@
+### 0.1.4
+  Bug Fixes
+  - Don't force, just don't install bin wrappers
+
 ### 0.1.3
   Bug Fixes
   - Force the install of aws-sdk-v1 so we don't fail on systems running

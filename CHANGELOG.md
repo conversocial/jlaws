@@ -1,5 +1,9 @@
 ### 0.1.4
   Bug Fixes
+  - Still need to force install of aws-skd-v1, should co-exist with V2 gem OK
+
+### 0.1.4
+  Bug Fixes
   - Don't force, just don't install bin wrappers
 
 ### 0.1.3

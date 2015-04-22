@@ -12,8 +12,9 @@ zlib.run_action(:install)
 c = chef_gem 'aws-sdk-v1' do
   action :install
   version node['jlaws']['aws_sdk_ver']
-  # don't install wrappers to avoid conflicts with older gem versions
-  options('--no-wrappers')
+  # Use force to make a side by side gem install work with aws-sdk < 2.0
+  # (The aws cookbook use the v2 sdk)
+  options('--no-wrappers --force')
 end
 c.run_action(:install)
 

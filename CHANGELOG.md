@@ -1,3 +1,12 @@
+### 0.1.5
+  Bug Fixes
+  - The xml cookbook has locked nokogiri to a specific version.
+    Installing aws-sdk-v1 gem at compile times conflict with this and breaks
+    any system that tries to use xml cookbook >= 1.28. The route53 cookbook
+    depends on xml.
+    Detect xml's pinning and install the same version of nokogiri.
+
+
 ### 0.1.4
   Bug Fixes
   - Still need to force install of aws-sdk-v1, but should now co-exist with

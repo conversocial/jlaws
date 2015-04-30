@@ -1,4 +1,7 @@
-### 0.1.5
+### 0.1.7
+  - ONLY try and lock nokogiri if it's in the recipe list
+
+### 0.1.6
   Bug Fixes
   - The xml cookbook has locked nokogiri to a specific version.
     Installing aws-sdk-v1 gem at compile times conflict with this and breaks

@@ -11,12 +11,14 @@ zlib.run_action(:install)
 
 # workaround the xml cookbook locking nokogiri
 # and install the same version before we install aws-sdk-v1
-x = chef_gem 'nokogiri' do
-  action :nothing
-  version node['xml']['nokogiri']['version']
-  only_if { node['xml']['nokogiri']['version'] }
+if node.recipes.include?('xml')
+  x = chef_gem 'nokogiri' do
+    action :nothing
+    version node['xml']['nokogiri']['version']
+    only_if { node['xml']['nokogiri']['version'] }
+  end
+  x.run_action(:install)
 end
-x.run_action(:install)
 
 c = chef_gem 'aws-sdk-v1' do
   action :install

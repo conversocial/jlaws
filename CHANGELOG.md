@@ -1,3 +1,6 @@
+### 0.2.0
+  - Basic support for RHEL variants to make things work on AWS linux
+
 ### 0.1.7
   - ONLY try and lock nokogiri if it's in the recipe list
 

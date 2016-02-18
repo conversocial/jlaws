@@ -4,7 +4,14 @@
 #
 include_recipe 'build-essential::default'
 
-zlib = package 'zlib1g-dev' do
+case node['platform_family']
+when 'debian'
+  zlib_pkg = 'zlib1g-dev'
+when 'rhel'
+  zlib_pkg = 'zlib-devel'
+end
+
+zlib = package zlib_pkg do
   action :install
 end
 zlib.run_action(:install)

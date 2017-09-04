@@ -1,3 +1,6 @@
+### 0.2.1
+  - Support detecting AWS region from ohai data.
+
 ### 0.2.0
   - Basic support for RHEL variants to make things work on AWS linux
 

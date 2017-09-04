@@ -23,12 +23,17 @@ module Helper
     def ec2_instance_state(instance_id,
                    aws_access_key_id = nil,
                    aws_secret_access_key = nil)
+      aws_region = 'us-east-1'
+      if node.ec2
+         aws_region = node.ec2.placement_availability_zone.chop
+      end
       if aws_access_key_id
         ec2_con = AWS::EC2::Client::V20130815.new(
             :access_key_id => aws_access_key_id,
-            :secret_access_key => aws_secret_access_key)
+            :secret_access_key => aws_secret_access_key,
+            :region => aws_region)
       else
-        ec2_con = AWS::EC2::Client::V20130815.new()
+        ec2_con = AWS::EC2::Client::V20130815.new(:region => aws_region)
       end
       begin
         resp = ec2_con.describe_instance_status(

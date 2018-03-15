@@ -1,3 +1,7 @@
+### 0.3.0
+  - Support more versions of build-essential
+  - Improve reliability of tests by running apt-update before them
+
 ### 0.2.1
   - Support detecting AWS region from ohai data.
 
@@ -42,5 +46,5 @@
 
 ## Enhancements
   - Add library to extend existing chef resource using not_if and only_if.
-    Includes: instance_running?, intance_stopped?, 
+    Includes: instance_running?, intance_stopped?,
     instance_terminated?, instance_stopping?

@@ -51,7 +51,7 @@ secret = Jlaws.S3DataBagSecret(
 data_bag_item = Chef::EncryptedDataBagItem.load('my_data_bag', 'item', secret)
 ```
 
-### Jlaws.S3DataBagSecret
+### Jlaws.SecretsManager
 
 Alternately to the jlaws_secrets_manager_file resource if you need to use the contents of an
 secret during a chef run you may do the following:

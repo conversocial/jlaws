@@ -11,5 +11,5 @@ group :develepment do
   gem 'guard-foodcritic'
   gem 'foodcritic'
   gem 'chefspec', '>= 3.1'
-  gem 'aws-sdk'
+  gem 'aws-sdk-v3'
 end

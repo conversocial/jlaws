@@ -33,7 +33,7 @@ The supports the same attributes as the [file](http://docs.opscode.com/resource_
 
 ```
   jlaws_secrets_manger_file '/var/files/from/s3/mylocalfile.txt'
-    secret_path 'aws/secrets/manager/path'
+    secret_name 'aws/secrets/manager/path'
   end
 ```
 
@@ -57,7 +57,7 @@ Alternately to the jlaws_secrets_manager_file resource if you need to use the co
 secret during a chef run you may do the following:
 
 ```
-secret = Jlaws.AWSSecretManager('aws/secrets/manager/path')
+secret = Jlaws.SecretManager('aws/secrets/manager/path')
 data_bag_item = Chef::EncryptedDataBagItem.load('my_data_bag', 'item', secret)
 ```
 

@@ -28,7 +28,7 @@ def do_secrets_file_file(resource_action)
 
   file new_resource.name do
     path new_resource.path
-    content sm.get_secret_value(secret_id: secret_id)
+    content sm.get_secret_value(secret_id: secret_name)
     owner new_resource.owner
     group new_resource.group
     mode new_resource.mode

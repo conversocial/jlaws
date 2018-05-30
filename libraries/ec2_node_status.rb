@@ -24,26 +24,25 @@ module Helper
                    aws_access_key_id = nil,
                    aws_secret_access_key = nil)
       aws_region = 'us-east-1'
-      if node.ec2
+      if node.key?('ec2')
          aws_region = node.ec2.placement_availability_zone.chop
       end
       if aws_access_key_id
-        ec2_con = AWS::EC2::Client::V20130815.new(
+        ec2_con = Aws::EC2::Client.new(
             :access_key_id => aws_access_key_id,
             :secret_access_key => aws_secret_access_key,
             :region => aws_region)
       else
-        ec2_con = AWS::EC2::Client::V20130815.new(:region => aws_region)
+        ec2_con = Aws::EC2::Client.new(:region => aws_region)
       end
       begin
         resp = ec2_con.describe_instance_status(
           :instance_ids => ["#{instance_id}"],
           :include_all_instances => true)
 
-        instance = resp[:instance_status_set].first
-        state = instance[:instance_state][:name]
+        state = resp.instance_statuses[0].instance_state.name
         return state
-      rescue AWS::EC2::Errors::InvalidInstanceID::NotFound
+      rescue Aws::EC2::Errors::InvalidInstanceIDNotFound
         return 'notfound'
       end
     end

@@ -1,3 +1,7 @@
+### 1.0.0
+  - Use aws-sdk v3
+  - Add support for AWS secrets manger
+
 ### 0.3.0
   - Support more versions of build-essential
   - Improve reliability of tests by running apt-update before them

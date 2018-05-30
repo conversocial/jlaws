@@ -11,24 +11,29 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-12.04
-    run_list: apt::default
   - name: ubuntu-14.04
-    run_list: apt::default
+  - name: ubuntu-16.04
+  - name: ubuntu-18.04
 
 suites:
   - name: default
     run_list:
       - recipe[jlaws::default]
-  - name: withxml
-    run_list:
-      - recipe[xml::default]
-      - recipe[jlaws::default]
-    attributes:
-    # Test the instance-status library
   - name: instance-status
     run_list:
-      - recipe[instance-status::default]
+      - recipe[test-jlaws::default]
     attributes:
-      <%= "aws_access_key_id: #{ENV['AWS_ACCESS_KEY_ID']}" %>
-      <%= "aws_secret_access_key: #{ENV['AWS_SECRET_ACCESS_KEY']}" %>
+      # We explicity look for these node level attributes in the cookbook
+      # if they don't exist we fall back to aws-sdk's use of IAM instnance
+      # credentials
+      aws_access_key_id: <%= "#{ENV['AWS_ACCESS_KEY_ID']}" %>
+      aws_secret_access_key: <%= "#{ENV['AWS_SECRET_ACCESS_KEY']}" %>
+  - name: secrets-manager
+    run_list:
+      - recipe[test-jlaws::secrets-manager]
+    attributes:
+      # We explicity look for these node level attributes in the cookbook
+      # if they don't exist we fall back to aws-sdk's use of IAM instnance
+      # credentials
+      aws_access_key_id: <%= "#{ENV['AWS_ACCESS_KEY_ID']}" %>
+      aws_secret_access_key: <%= "#{ENV['AWS_SECRET_ACCESS_KEY']}" %>

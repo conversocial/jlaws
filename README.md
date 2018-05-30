@@ -27,6 +27,16 @@ The supports the same attributes as the [file](http://docs.opscode.com/resource_
   end
 ```
 
+### jlaws_secrets_manager_file
+
+The supports the same attributes as the [file](http://docs.opscode.com/resource_file.html) resource.
+
+```
+  jlaws_secrets_manger_file '/var/files/from/s3/mylocalfile.txt'
+    secret_name 'aws/secrets/manager/path'
+  end
+```
+
 ## Libraries
 ### Jlaws.S3DataBagSecret
 
@@ -38,6 +48,16 @@ secret = Jlaws.S3DataBagSecret(
   'my-s3-bucket',
   'databag-keys-folder/my_data_bag_secret'
 )
+data_bag_item = Chef::EncryptedDataBagItem.load('my_data_bag', 'item', secret)
+```
+
+### Jlaws.SecretsManager
+
+Alternately to the jlaws_secrets_manager_file resource if you need to use the contents of an
+secret during a chef run you may do the following:
+
+```
+secret = Jlaws.SecretManager('aws/secrets/manager/path')
 data_bag_item = Chef::EncryptedDataBagItem.load('my_data_bag', 'item', secret)
 ```
 

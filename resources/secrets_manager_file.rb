@@ -7,10 +7,10 @@ state_attrs :backup,
             :mode,
             :owner,
             :path,
-            :remote_path
+            :secret_name
 
 attribute :path, :kind_of => String, :name_attribute => true
-attribute :remote_path, :kind_of => String
+attribute :secret_name, :kind_of => String
 attribute :bucket, :kind_of => String
 attribute :owner, :regex => Chef::Config[:user_valid_regex]
 attribute :group, :regex => Chef::Config[:group_valid_regex]

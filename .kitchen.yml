@@ -26,8 +26,8 @@ suites:
       # We explicity look for these node level attributes in the cookbook
       # if they don't exist we fall back to aws-sdk's use of IAM instnance
       # credentials
-      <%= "aws_access_key_id: #{ENV['AWS_ACCESS_KEY_ID']}" %>
-      <%= "aws_secret_access_key: #{ENV['AWS_SECRET_ACCESS_KEY']}" %>
+      aws_access_key_id: <%= "#{ENV['AWS_ACCESS_KEY_ID']}" %>
+      aws_secret_access_key: <%= "#{ENV['AWS_SECRET_ACCESS_KEY']}" %>
   - name: secrets-manager
     run_list:
       - recipe[test-jlaws::secrets-manager]
@@ -35,5 +35,5 @@ suites:
       # We explicity look for these node level attributes in the cookbook
       # if they don't exist we fall back to aws-sdk's use of IAM instnance
       # credentials
-      <%= "aws_access_key_id: #{ENV['AWS_ACCESS_KEY_ID']}" %>
-      <%= "aws_secret_access_key: #{ENV['AWS_SECRET_ACCESS_KEY']}" %>
+      aws_access_key_id: <%= "#{ENV['AWS_ACCESS_KEY_ID']}" %>
+      aws_secret_access_key: <%= "#{ENV['AWS_SECRET_ACCESS_KEY']}" %>

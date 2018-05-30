@@ -31,7 +31,7 @@ def do_secrets_file_file(resource_action)
       :region => aws_region
     )
   else
-    sm = AWS::SecretsManager::Client.new(:region => aws_region)
+    sm = Aws::SecretsManager::Client.new(:region => aws_region)
   end
 
   sec = sm.get_secret_value(secret_id: new_resource.secret_name).secret_string

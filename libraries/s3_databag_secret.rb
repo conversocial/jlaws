@@ -1,7 +1,11 @@
 class Chef::Recipe::Jlaws
   # Retrieve a specified file from S3 using an EC2 instances IAM credentials
   # It's designed for retrieving encrypted data bag keys
-  def self.S3DataBagSecret(s3_bucket, s3_path, aws_region = 'us-east-1')
+  def self.S3DataBagSecret(s3_bucket, s3_path,
+                           aws_access_key_id = nil,
+                           aws_secret_access_key = nil,
+                           aws_region = 'us-east-1'
+                          )
     if aws_access_key_id
       s3 = Aws::S3::Client.new(
         :access_key_id => aws_access_key_id,

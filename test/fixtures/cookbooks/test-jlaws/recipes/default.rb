@@ -1,22 +1,15 @@
 include_recipe 'jlaws'
 Chef::Resource::Log.send(:include, Jlaws::Helper)
 
-log "Node i-422b873d (leeroy) is running!" do
-  only_if { instance_running?('i-422b873d',
-                       node['aws_access_key_id'],
-                       node['aws_secret_access_key']) }
-end
-
-# Node is stopped
-log "Node i-670fc98b is termnated!" do
-  only_if { instance_terminated?('i-670fc98b',
+log "Node i-015745ebceae7ab40 (leeroy) is running!" do
+  only_if { instance_running?('i-015745ebceae7ab40',
                        node['aws_access_key_id'],
                        node['aws_secret_access_key']) }
 end
 
 # Node is NOT terminated - dosen't log this
-log "Node i-67b71686 is terminated!" do
-  only_if { instance_terminated?('i-67b71686',
+log "Node i-015745ebceae7ab40 is terminated!" do
+  only_if { instance_terminated?('i-015745ebceae7ab40',
                        node['aws_access_key_id'],
                        node['aws_secret_access_key']) }
 end

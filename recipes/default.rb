@@ -19,6 +19,4 @@ chef_gem 'aws-sdk-resources' do
   options('--conservative')
 end
 
-
-
 require 'aws-sdk'

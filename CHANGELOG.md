@@ -1,3 +1,6 @@
+### 1.0.1
+  - Make sure minimum version of aws-sdk-resources is installed
+
 ### 1.0.0
   - Use aws-sdk v3
   - Add support for AWS secrets manger

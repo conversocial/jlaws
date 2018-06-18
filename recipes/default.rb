@@ -11,4 +11,12 @@ chef_gem 'aws-sdk' do
   options('--no-wrappers --force')
 end
 
+chef_gem 'aws-sdk-resources' do
+  action :install
+  compile_time true
+  version node['jlaws']['aws_sdk_resources_ver']
+  # --conservative to not upgrade existing gems meeting version
+  options('--conservative')
+end
+
 require 'aws-sdk'

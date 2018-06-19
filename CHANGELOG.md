@@ -1,3 +1,7 @@
+### 1.0.2
+  - Use the --no-wrapper option to gem install to prevent conflicts when using
+    multiple version of the same gem.
+
 ### 1.0.1
   - Make sure minimum version of aws-sdk-resources is installed
 

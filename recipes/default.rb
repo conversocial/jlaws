@@ -7,6 +7,8 @@ chef_gem 'aws-sdk-resources' do
   compile_time true
   version node['jlaws']['aws_sdk_resources_ver']
   # --conservative to not upgrade existing gems meeting version
+  # --no-wrappers to avoid installing a exectuable that may conflict
+  # with other versions installed by other cookbooks/gems.
   options('--conservative --no-wrappers')
 end
 

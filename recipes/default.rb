@@ -9,7 +9,8 @@ chef_gem 'aws-sdk-resources' do
   # --conservative to not upgrade existing gems meeting version
   # --no-wrappers to avoid installing a exectuable that may conflict
   # with other versions installed by other cookbooks/gems.
-  options('--conservative --no-wrappers')
+  # The --force option overwrites any executables left over from aws-sdk
+  options('--conservative --no-wrappers --force')
 end
 
 chef_gem 'aws-sdk' do

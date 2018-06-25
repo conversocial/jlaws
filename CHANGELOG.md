@@ -1,3 +1,6 @@
+### 1.0.3
+  - Use --force to overwrite conflicting executable versions.
+
 ### 1.0.2
   - Use the --no-wrapper option to gem install to prevent conflicts when using
     multiple version of the same gem.

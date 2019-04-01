@@ -3,8 +3,15 @@ class Chef::Recipe::Jlaws
   def self.SecretsManager(secret_id,
                           aws_access_key_id = nil,
                           aws_secret_access_key = nil,
-                          aws_region = 'us-east-1'
+                          aws_region = 'us-east-1',
+                          mock = nil
                          )
+    # Support mocking results for cookbook testing.
+    unless mock.nil?
+      return mock
+    end
+
+    # Fetch secret from AWS.
     if aws_access_key_id
       sm = Aws::SecretsManager::Client.new(
         :access_key_id => aws_access_key_id,

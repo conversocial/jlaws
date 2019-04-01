@@ -1,3 +1,6 @@
+### 1.1.0
+  - Support `mock` attributes for cookbook testing.
+
 ### 1.0.3
   - Use --force to overwrite conflicting executable versions.
 

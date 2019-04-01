@@ -21,9 +21,17 @@ module Helper
 
   private
     def ec2_instance_state(instance_id,
-                   aws_access_key_id = nil,
-                   aws_secret_access_key = nil)
-      aws_region = 'us-east-1'
+                           aws_access_key_id = nil,
+                           aws_secret_access_key = nil,
+                           aws_region = 'us-east-1',
+                           mock = nil
+                          )
+      # Support mocking results for cookbook testing.
+      unless mock.nil?
+        return mock
+      end
+
+      # Fetch instance status from AWS.
       if node.key?('ec2')
          aws_region = node.ec2.placement_availability_zone.chop
       end

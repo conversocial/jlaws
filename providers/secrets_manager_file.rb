@@ -23,19 +23,7 @@ action :touch do
 end
 
 def do_secrets_file_file(resource_action)
-  aws_region = node.key?('aws_region') ? node['aws_region'] : 'us-east-1'
-  if node.key?('aws_access_key_id') and node.key?('aws_secret_access_key')
-    sm = Aws::SecretsManager::Client.new(
-      :access_key_id => node['aws_access_key_id'],
-      :secret_access_key => node['aws_secret_access_key'],
-      :region => aws_region
-    )
-  else
-    sm = Aws::SecretsManager::Client.new(:region => aws_region)
-  end
-
-  sec = sm.get_secret_value(secret_id: new_resource.secret_name).secret_string
-
+  sec = fetch_secret_content()
   file new_resource.name do
     path new_resource.path
     content sec
@@ -45,4 +33,15 @@ def do_secrets_file_file(resource_action)
     backup new_resource.backup
     action resource_action
   end
+end
+
+def fetch_secret_content()
+  aws_region = node.key?('aws_region') ? node['aws_region'] : 'us-east-1'
+  Chef::Recipe::Jlaws.SecretsManager(
+    new_resource.secret_name,
+    node['aws_access_key_id'],
+    node['aws_secret_access_key'],
+    aws_region,
+    new_resource.mock
+  )
 end

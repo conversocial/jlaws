@@ -17,6 +17,7 @@ attribute :group, :regex => Chef::Config[:group_valid_regex]
 attribute :mode, :kind_of => [String, Integer, NilClass], :default => nil
 attribute :checksum, :kind_of => [String, NilClass], :default => nil
 attribute :backup, :kind_of => [Integer, FalseClass], :default => 5
+attribute :mock, :kind_of => [String, NilClass], :default => nil
 
 version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
 if version.major > 11 || (version.major == 11 && version.minor >= 6)

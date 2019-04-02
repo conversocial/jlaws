@@ -1,5 +1,5 @@
 include_recipe 'jlaws'
-Chef::Resource::Log.send(:include, Helper)
+Chef::Resource::Log.send(:include, JlawsHelper)
 
 log "Node i-015745ebceae7ab40 (leeroy) is running!" do
   only_if { instance_running?('i-015745ebceae7ab40',

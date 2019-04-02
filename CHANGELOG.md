@@ -1,6 +1,7 @@
 ### 2.0.0
   - Only install required parts of AWS SDK
-  - Upgrade to support Chef Client 14
+  - Upgrade to support only Chef Client 14+, Chef Client 12 support is no more
+  - Helper is now JlawsHelper to avoid namespace clashes
 
 ### 1.1.0
   - Support `mock` attributes for cookbook testing.

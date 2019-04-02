@@ -72,7 +72,7 @@ Extend existing Chef Resources and base actions on the following checks:
 Example extending Log resource:
 ```
 include_recipe 'jlaws'
-Chef::Resource::Log.send(:include, Jlaws::Helper)
+Chef::Resource::Log.send(:include, JlawsHelper)
 
 log "Node i-42273d11 is running!" do
   only_if { instance_running?('i-42273d11') }

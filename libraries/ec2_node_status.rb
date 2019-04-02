@@ -1,4 +1,4 @@
-module Helper
+module JlawsHelper
   def instance_running?(*args)
     state = ec2_instance_state(*args)
     state == 'running' ? true : false

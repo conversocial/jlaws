@@ -9,6 +9,26 @@ provisioner:
   name: dokken
 
 platforms:
+
+  - name: aws-linux
+    driver:
+      pid_one_command: /sbin/init
+      image: dokken/amazonlinux
+      intermediate_instructions:
+        # When running outside jenkins provide assumed IAM aws creds
+        <% if ENV['USER'] != 'jenkins' %>
+        - ENV AWS_SHARED_CREDENTIALS_FILE=/.aws/credentials
+        <% end %>
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        # When running outside jenkins provide assumed IAM aws creds
+        # Note I'm seein odd behaviour in test kitchen locally where it takes
+        # multiple attempts for it to manage to set up these volumes as it's
+        # just local I'm working around it for by converged until it sucseeds
+        <% if ENV['USER'] != 'jenkins' %>
+        - <%= ENV['HOME'] %>/.aws:/.aws:ro
+        <% end %>
+
   - name: ubuntu-18.04
     driver:
       image: dokken/ubuntu-18.04
@@ -19,6 +39,26 @@ platforms:
         # down the image, if you have this cached and it's old you'll probably
         # get errors from apt
         - RUN apt-get update
+        # When running outside jenkins provide assumed IAM aws creds
+        <% if ENV['USER'] != 'jenkins' %>
+        - ENV AWS_SHARED_CREDENTIALS_FILE=/.aws/credentials
+        <% end %>
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        # When running outside jenkins provide assumed IAM aws creds
+        # Note I'm seein odd behaviour in test kitchen locally where it takes
+        # multiple attempts for it to manage to set up these volumes as it's
+        # just local I'm working around it for by converged until it sucseeds
+        <% if ENV['USER'] != 'jenkins' %>
+        - <%= ENV['HOME'] %>/.aws:/.aws:ro
+        <% end %>
+
+  - name: aws-linux-2
+    driver:
+      image: dokken/amazonlinux-2
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
         # When running outside jenkins provide assumed IAM aws creds
         <% if ENV['USER'] != 'jenkins' %>
         - ENV AWS_SHARED_CREDENTIALS_FILE=/.aws/credentials

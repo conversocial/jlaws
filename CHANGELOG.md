@@ -1,3 +1,6 @@
+### 1.2.0
+  - Only install required parts of AWS SDK
+
 ### 1.1.0
   - Support `mock` attributes for cookbook testing.
 

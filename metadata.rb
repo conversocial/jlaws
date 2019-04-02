@@ -4,5 +4,8 @@ maintainer_email 'mail@jameslegg.co.uk'
 license          'Apache 2.0'
 description      'provides LWRPs for interaction with AWS'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.1.0'
-supports         'ubuntu'
+version          '2.0.0'
+supports         'ubuntu', '=18.04'
+supports         'amazon'
+
+chef_version '~> 14.11.21' if respond_to?(:chef_version)

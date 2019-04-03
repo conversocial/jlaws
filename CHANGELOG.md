@@ -1,3 +1,6 @@
+### 2.0.1
+  - Fix default region if `nil` is passed in.
+
 ### 2.0.0
   - Only install required parts of AWS SDK
   - Upgrade to support only Chef Client 14+, Chef Client 12 support is no more

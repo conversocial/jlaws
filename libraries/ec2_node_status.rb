@@ -23,7 +23,7 @@ module JlawsHelper
     def ec2_instance_state(instance_id,
                            aws_access_key_id = nil,
                            aws_secret_access_key = nil,
-                           aws_region = 'us-east-1',
+                           aws_region = nil,
                            mock = nil
                           )
       # Support mocking results for cookbook testing.
@@ -32,6 +32,7 @@ module JlawsHelper
       end
 
       # Fetch instance status from AWS.
+      aws_region ||= 'us-east-1'
       if node.key?('ec2')
          aws_region = node.ec2.placement_availability_zone.chop
       end

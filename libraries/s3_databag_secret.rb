@@ -4,7 +4,7 @@ class Chef::Recipe::Jlaws
   def self.S3DataBagSecret(s3_bucket, s3_path,
                            aws_access_key_id = nil,
                            aws_secret_access_key = nil,
-                           aws_region = 'us-east-1',
+                           aws_region = nil,
                            mock = nil
                           )
     # Support mocking results for cookbook testing.
@@ -13,6 +13,7 @@ class Chef::Recipe::Jlaws
     end
 
     # Fetch secret from AWS.
+    aws_region ||= 'us-east-1'
     if aws_access_key_id
       s3 = Aws::S3::Client.new(
         :access_key_id => aws_access_key_id,

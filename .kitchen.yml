@@ -9,7 +9,6 @@ provisioner:
   name: dokken
 
 platforms:
-
   - name: aws-linux
     driver:
       pid_one_command: /sbin/init

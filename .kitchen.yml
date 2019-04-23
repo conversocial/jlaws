@@ -7,6 +7,8 @@ transport:
 
 provisioner:
   name: dokken
+  attributes:
+    ec2: {placement_availability_zone: 'us-east-1a'}
 
 platforms:
   - name: aws-linux

@@ -34,7 +34,7 @@ module JlawsHelper
       # Fetch instance status from AWS.
       aws_region ||= 'us-east-1'
       if node.key?('ec2')
-         aws_region = node.ec2.placement_availability_zone.chop
+         aws_region = node['ec2']['placement_availability_zone'].chop
       end
       if aws_access_key_id
         ec2_con = Aws::EC2::Client.new(

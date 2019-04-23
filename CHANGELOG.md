@@ -1,3 +1,6 @@
+### 2.0.2
+  - Fix node attributes access in `ec2_node_status` helper.
+
 ### 2.0.1
   - Fix default region if `nil` is passed in.
 

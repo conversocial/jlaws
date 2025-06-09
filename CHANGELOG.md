@@ -1,3 +1,6 @@
+### 2.0.3
+  - Fix incorrect usage of aws_sdk_s3_ver attribute
+
 ### 2.0.2
   - Fix node attributes access in `ec2_node_status` helper.
 

@@ -5,7 +5,7 @@
 chef_gem 'aws-sdk-s3' do
   action :install
   compile_time true
-  version node['jlaws']['aws_sdk_resources_s3_ver']
+  version node['jlaws']['aws_sdk_s3_ver']
 end
 
 chef_gem 'aws-sdk-secretsmanager' do

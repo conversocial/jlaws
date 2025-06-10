@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'berkshelf'
 group :develepment do
   gem 'test-kitchen'
-  gem 'kitchen-vagrant'
+  gem 'kitchen-dokken'
   gem 'rspec'
   gem 'guard'
   gem 'guard-kitchen'
@@ -11,5 +11,4 @@ group :develepment do
   gem 'guard-foodcritic'
   gem 'foodcritic'
   gem 'chefspec', '>= 3.1'
-  gem 'aws-sdk-v3'
 end
